@@ -1,0 +1,97 @@
+
+
+.themeToggle {
+  position: relative;
+  padding: 0;
+  width: 1.82em;
+  height: 0.91em;
+  background-color: #f2f2f2;
+  background-color: var(--theme-toggle-primary-color);
+  border-radius: 20px;
+  outline: 0;
+  cursor: pointer;
+  z-index: 2;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+  -webkit-touch-callout: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  transition: background-color .5s ease;
+  border:0;
+}
+
+[data-theme=dark] .themeToggle {
+  background-color: #4d4d4d
+}
+
+.themeToggle:focus {
+  outline: none!important
+}
+
+.themeToggle-:focus .themeToggleInner {
+  box-shadow: 0 0 0 2px #00638a;
+  box-shadow: 0 0 0 2px var(--link-color)
+}
+
+.themeToggleInner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  margin: auto;
+  width: 0.91em;
+  height: 0.91em;
+  border-radius: 20px;
+  border: 2px solid #111;
+  border: 2px solid var(--theme-toggle-secondary-color);
+  overflow: hidden;
+  transition: transform .5s ease
+}
+
+[data-theme=dark] .themeToggleInner {
+  border: 2px solid #f2f2f2;
+  border: 2px solid var(--theme-toggle-primary-color);
+  transform: translateX(0.91em)
+}
+
+.themeToggleIcon {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 20px
+}
+
+.themeToggleIcon:before {
+  content: "";
+  position: relative;
+  width: 100%;
+  height: 100%;
+  left: 50%;
+  float: left;
+  background-color: #111;
+  background-color: var(--theme-toggle-secondary-color);
+  transition: border-radius .5s ease,width .5s ease,height .5s ease,left .5s ease,transform .5s ease
+}
+
+[data-theme=dark] .themeToggleIcon:before {
+  border-radius: 50%;
+  width: 150%;
+  height: 85%;
+  left: 40%;
+  background-color: #f2f2f2;
+  background-color: var(--theme-toggle-primary-color);
+  transform: translate(-10%,-40%),rotate(-35deg)
+}
+
+.themeToggleLabel {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+  border: 0
+}

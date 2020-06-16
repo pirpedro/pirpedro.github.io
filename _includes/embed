@@ -1,0 +1,24 @@
+{% capture embed_src %}{{ include.src }}{% endcapture %}
+{% capture embed_provider %}{{ include.provider }}{% endcapture %}
+
+<!-- Courtesy of embedresponsively.com //-->
+<div class="embed-container{% if embed_provider != blank %} {{embed_provider}}{% else %} embed-generic{% endif %}">
+{% case embed_provider %}
+{% when "vimeo" %}
+  <iframe src="https://player.vimeo.com/video/{{ embed_src }}?dnt=true" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+{% when "youtube" %}
+  <iframe src="https://www.youtube-nocookie.com/embed/{{ embed_src }}" frameborder="0" allowfullscreen></iframe>
+{% when "dailymotion" %}
+  <iframe src="https://www.dailymotion.com/embed/video/{{ embed_src }}" frameborder="0" allowfullscreen></iframe>
+{% when "google-drive" %}
+  <iframe src="https://drive.google.com/file/d/{{ embed_src }}/preview" frameborder="0" allowfullscreen></iframe>
+{% when "infogram" %}
+  <iframe src="https://infogram.com/{{ embed_src }}?live" frameborder="0" allowfullscreen></iframe>
+{% when "bilibili" %}
+  <iframe src="https://player.bilibili.com/player.html?bvid={{ embed_src}}&page=1&as_wide=1&high_quality=1&danmaku=0" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+{% when "arcgis" %}
+  <iframe src="https://www.arcgis.com/apps/Embed/index.html?webmap={{ embed_src }}" frameborder="0" allowfullscreen></iframe>
+{% else %}
+  <iframe src='{{ embed_src }}' style='border:0'></iframe>
+{% endcase %}
+</div>

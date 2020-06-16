@@ -1,0 +1,15 @@
+{% if include.id %}
+  {% assign accordion = page[include.id] %}
+{% else %}
+  {% assign accordion = page.accordion %}
+{% endif %}
+
+<div class="accordion accordion--default{% if include.class %} {{include.class}}{% endif %}">
+  {% if include.title %}
+    {% include accordion_item.html title=include.title content=include.content %}
+  {% else %}
+    {% for a in accordion %}
+      {% include accordion_item.html title=a.title content=a.content %}
+    {% endfor %}
+  {% endif %}
+</div>

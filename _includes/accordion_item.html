@@ -1,0 +1,10 @@
+
+  <div class="accordion__item">
+    <div class="accordion__item-title">
+      {{ include.title | markdownify | remove: "<p>" | remove: "</p>"}}
+    </div>
+    <div class="accordion__item-content" style="display:none;">
+      {{ include.content | markdownify }}
+    </div>
+</div>
+ 

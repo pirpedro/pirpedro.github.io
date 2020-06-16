@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+# script/run: Run a command in the primary container.
+
+set -e 
+
+cd "$(dirname "$0")/.."
+
+echo $*
+exec script/compose run --rm web $*

@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+# script/update: Update application to run for its current checkout.
+# If you have not worked on the project for a while, running 
+# script/update after a pull will ensure that everything inside the 
+# project is up to date and ready to work.
+
+set -e
+
+cd "$(dirname "$0")/.."
+script/bootstrap

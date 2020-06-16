@@ -1,0 +1,90 @@
+/* ==========================================================================
+   Contrast skin
+   ========================================================================== */
+
+/* Colors */
+$text-color: #000 !default;
+$muted-text-color: $text-color !default;
+$primary-color: #6f777d !default;
+$border-color: mix(#fff, $text-color, 75%) !default;
+$footer-background-color: #000 !default;
+$info-color: rgba(61, 174, 95, 1) !default;
+$list-color: $info-color !default;
+$masthead-link-color: $text-color !default;
+$masthead-link-color-hover: $text-color !default;
+$navicon-link-color-hover: mix(#fff, $text-color, 80%) !default;
+
+/* plum syntax highlighting (base16) */
+$base00: #ffffff !default; // Default Background
+$base01: #e0e0e0 !default; // Lighter Background
+$base02: #d0d0d0 !default; // Selection Background
+$base03: #b0b0b0 !default; // Comments, Invisibles, Line Highlighting
+$base04: #000000 !default; // Dark Foreground
+$base05: #101010 !default; // Default Foreground, Caret, Delimiters, Operators
+$base06: #151515 !default; // Light Foreground (Not often used)
+$base07: #202020 !default; // Light Background (Not often used)
+$base08: #ff0086 !default; // Variables, XML Tags, Markup Link Text, Markup Lists, Diff Deleted
+$base09: #fd8900 !default; // Integers, Boolean, Constants, XML Attributes, Markup Link Url
+$base0a: #aba800 !default; // Classes, Markup Bold, Search Text Background
+$base0b: #00c918 !default; // Strings, Inherited Class, Markup Code, Diff Inserted
+$base0c: #1faaaa !default; // Support, Regular Expressions, Escape Characters, Markup Quotes
+$base0d: #3777e6 !default; // Functions, Methods, Attribute IDs, Headings
+$base0e: #ad00a1 !default; // Keywords, Storage, Selector, Markup Italic, Diff Changed
+$base0f: #cc6633 !default; // Deprecated, Opening/Closing Embedded Language Tags
+
+:root{
+  --base00: #{$base00};
+  --base01: #{$base01}; 
+  --base02: #{$base02}; 
+  --base03: #{$base03}; 
+  --base04: #{$base04};
+  --base05: #{$base05}; 
+  --base06: #{$base06}; 
+  --base07: #{$base07}; 
+  --base08: #{$base08};
+  --base09: #{$base09}; 
+  --base0a: #{$base0a}; 
+  --base0b: #{$base0b};
+  --base0c: #{$base0c}; 
+  --base0d: #{$base0d}; 
+  --base0e: #{$base0e}; 
+  --base0f: #{$base0f}; 
+}
+/* MY DARK SYNTAX */
+[data-theme=dark]{
+  --base00: #231e18;
+  --base01: #302b25;
+  --base02: #48413a;
+  --base03: #9d8b70;
+  --base04: #b4a490;
+  --base05: #cabcb1;
+  --base06: #d7c8bc;
+  --base07: #e4d4c8;
+  --base08: #d35c5c;
+  --base09: #ca7f32;
+  --base0a: #e0ac16;
+  --base0b: #b7ba53;
+  --base0c: #6eb958;
+  --base0d: #88a4d3;
+  --base0e: #bb90e2;
+  --base0f: #b49368; 
+}
+
+.page__content {
+  .notice,
+  .notice--primary,
+  .notice--info,
+  .notice--warning,
+  .notice--success,
+  .notice--danger {
+    color: $text-color;
+  }
+}
+
+.page__footer {
+  color: #fff !important; // override
+}
+
+.page__footer-follow .social-icons .svg-inline--fa {
+  color: inherit;
+}

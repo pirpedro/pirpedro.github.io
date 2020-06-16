@@ -1,0 +1,25 @@
+---
+layout: single
+---
+
+<div class="recipe__body">
+  {{ content }}
+</div>
+
+<ul id="recipe" class="recipe__overview">
+  <li title="Servings">{% include recipe/recipe-icon.html icon="quantity" %}<span>{{ page.recipe.servings }}</span></li>
+  <li title="Prep Time">{% include recipe/recipe-icon.html icon="time" %}<span>{{ page.recipe.prep }}</span></li>
+  <li title="Cook Time">{% include recipe/recipe-icon.html icon="cook" %}<span>{{ page.recipe.cook }}</span></li>
+</ul>
+
+<div class="recipe__contents">
+  <div class="ingredients">
+    <h2>Ingredients</h2>
+    {{ page.recipe.ingredients | markdownify }}
+  </div>
+
+  <div class="directions">
+    <h2>Directions</h2>
+    {{ page.recipe.directions | markdownify }}
+  </div>
+</div>

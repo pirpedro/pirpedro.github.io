@@ -1,0 +1,20 @@
+{% if include.id %}
+  {% assign tabs = page[include.id] %}
+{% else %}
+  {% assign tabs = page.tabs %}
+{% endif %}
+
+<div class="tabs">
+  <div class="tabs-menu">
+    {% for t in tabs%}
+    <span class="tabs-link{% if forloop.first %} is-active{% endif %}">{{t.title}}</span>
+    {% endfor %}
+  </div>
+  {% for t in tabs%}
+    <div class="tab{% unless forloop.first %} is-hidden{% endunless %}">
+      {{t.content | markdownify }}
+    </div>
+  {% endfor %}
+
+
+</div>

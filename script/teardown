@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+# script/teardown: Destroy all containers, images and volumes created by docker-compose.
+
+set -e 
+
+cd "$(dirname "$0")/.."
+
+#we are using only build images, so it's safe to remove 'all'
+script/compose down -v --rmi all --remove-orphans 

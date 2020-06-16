@@ -1,0 +1,155 @@
+/* ==========================================================================
+   BUTTONS
+   ========================================================================== */
+
+/*
+   Default button
+   ========================================================================== */
+
+.btn {
+  /* default */
+  display: inline-block;
+  margin-bottom: 0.25em;
+  padding: 0.5em 1em;
+  font-family: $sans-serif;
+  font-size: $type-size-6;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  border-width: 0;
+  border-radius: $border-radius;
+  cursor: pointer;
+
+  .icon {
+    margin-right: 0.5em;
+  }
+
+  .icon + .hidden {
+    margin-left: -0.5em; /* override for hidden text*/
+  }
+
+  /* button colors */
+  $buttoncolors:
+  (primary, $primary-color),
+  (inverse, #fff),
+  (light-outline, transparent),
+  (success, $success-color),
+  (warning, $warning-color),
+  (danger, $danger-color),
+  (info, $info-color),
+  (facebook, $facebook-color),
+  (twitter, $twitter-color),
+  (linkedin, $linkedin-color),
+  (bmc, $buymeacoffee-color);
+
+  @each $buttoncolor, $color in $buttoncolors {
+    &--#{$buttoncolor} {
+      @include yiq-contrasted($color);
+      @if ($buttoncolor == inverse) {
+        border: 1px solid var(--border-color);
+      }
+      @if ($buttoncolor == light-outline) {
+        border: 1px solid #fff;
+      }
+
+      &:visited {
+        @include yiq-contrasted($color);
+      }
+
+      &:hover {
+        @include yiq-contrasted(mix(#000, $color, 20%));
+      }
+    }
+  }
+
+  &.btn--bmc{
+
+    background-color:#FF813F !important;
+    letter-spacing:0.6px !important;
+    font-family:'Cookie', cursive !important;
+    -webkit-box-sizing: border-box !important;
+    box-sizing: border-box;
+    font-size: 1em;
+    padding: 0.2em 0.7em;
+
+
+    img{
+      height: 0.9em ;
+      width: 0.9em;
+      margin-bottom: 7px;
+      box-shadow: none;
+      border: none;
+      vertical-align: middle;
+
+    }
+
+
+  }
+
+
+  /* fills width of parent container */
+  &--block {
+    display: block;
+    width: 100%;
+
+    + .btn--block {
+      margin-top: 0.25em;
+    }
+  }
+
+  /* disabled */
+  &--disabled {
+    pointer-events: none;
+    cursor: not-allowed;
+    filter: alpha(opacity=65);
+    box-shadow: none;
+    opacity: 0.65;
+  }
+
+  /* extra large button */
+  &--x-large {
+    font-size: $type-size-4;
+  }
+
+  /* large button */
+  &--large {
+    font-size: $type-size-5;
+  }
+
+  /* small button */
+  &--small {
+    font-size: $type-size-7;
+  }
+
+  /* inline */
+  &--inline {
+    font-size: $type-size-9;
+    vertical-align: middle;
+  }
+}
+
+#bmc-wbtn{
+  visibility:hidden;
+  width: 3em !important;
+  height: 3em !important;
+
+  + div{
+    visibility: hidden;
+    max-width: 15em !important;
+    max-height:5em !important;
+    font-size: 0.64em !important;
+    padding: 1em !important;
+    left: 7em !important;
+
+    @include breakpoint($medium) {
+      visibility: visible;
+    }
+  }
+
+
+  @include breakpoint($medium) {
+    visibility: visible;
+  }
+
+
+}

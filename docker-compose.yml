@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+  web:
+    build: 
+      context: .
+    image: blog:1.0
+    command: bundle exec jekyll serve -H 0.0.0.0 -t --force_polling --livereload --drafts
+    volumes:
+      - .:/srv/jekyll
+      - ~/.aws:/home/jekyll/.aws
+    ports:
+      - 4000:4000
+      - 35729:35729
+    user: "1000:1000"
+    env_file:
+      - .env

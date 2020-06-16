@@ -1,0 +1,27 @@
+<header>
+  {% if page.featured_image %}
+   <div class="take-me">
+      <a href="#recipe" class="btn btn--inverse btn--large">{{ include.label | default: site.data.ui-text[site.locale].jump_label | default: "Jump to Recipe" }}</a>
+    </div>
+    
+    <h1>
+      <a href="{{ page.url }}">
+        {{ page.title }}
+      </a>
+    </h1>
+    <time datetime="{{ page.date | date_to_xmlschema }}">
+      {{ page.date | date: "%B %-d, %Y" }}
+    </time>
+
+    <div class="featured_image">
+      <img src="{{ page.featured_image | relative_url }}" alt="{{page.title}}">
+    </div>
+  {% else %} 
+    {% if page.title %}<h1 id="page-title" class="page__title" itemprop="headline">{{ page.title | markdownify | remove: "<p>" | remove: "</p>" }}</h1>{% endif %}
+  {% endif %}
+  
+  {% if page.read_time %}
+    <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> {% include read-time.html %}</p>
+  {% endif %}
+  
+</header>

@@ -1,0 +1,74 @@
+.tabs {
+  margin-bottom: 1.5em;
+}
+ 
+.tab {
+  display: block;
+  padding: 30px;
+  margin-top: -1px;
+  border: 1px solid var(--border-color);
+  border-bottom-right-radius: $border-radius;
+  border-bottom-left-radius: $border-radius;
+
+  @include breakpoint($medium) {
+    border-top-left-radius: $border-radius;
+    border-top-right-radius: $border-radius;
+  }
+  
+  &:nth-child(2) {
+    border-top-left-radius: 0;
+  }
+
+  p:last-child {
+    margin-bottom: 0;
+  }
+}
+ 
+.tabs-link {
+  display: block;
+  padding: 8px 30px;
+  margin: 0;
+  font-weight: 600;
+  cursor: pointer;
+  border-color: var(--border-color);
+  border-style: solid;
+  border-width: 1px 1px 0;
+
+  &:hover {
+    color: $link-color-hover;
+  }
+
+  &:first-child{
+    border-top-left-radius: $border-radius;
+    border-top-right-radius: $border-radius;
+  }
+
+  @include breakpoint($medium) {
+    display: inline-block;
+    border: transparent;
+  
+  }
+
+  &.is-active {
+    color: $link-color;
+    cursor: pointer;
+    border-color: var(--border-color);
+
+
+    &:hover {
+      color: $link-color;
+      cursor: default;
+    }
+
+    @include breakpoint($medium) {
+      border: 1px solid var(--border-color);
+      border-bottom: 1px solid var(--background-color);
+      border-top-left-radius: 4px;
+      border-top-right-radius: 4px;
+    }
+  }
+}
+ 
+.is-hidden {
+  display: none;
+}

@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+
+# script/compose: This script calls the real docker-compose setting 
+#                 the project name accordingly with the current username and build context.
+#                 This is useful when running several instances in parallel(i.e.: same CI 
+#                 server).
+
+set -e
+
+cd "$(dirname "$0")/.."
+
+if [ ! "$NOCONFLICT" ]; then
+	NOCONFLICT=""
+	NOCONFLICT="${NOCONFLICT}$(whoami)"
+
+	if [ "$NOCONFLICT_CONTEXT" ]; then
+		NOCONFLICT="${NOCONFLICT}-${NOCONFLICT_CONTEXT}"
+	fi
+fi
+
+NOCONFLICTPREFIX=$(echo $NOCONFLICT | sed -e 's/[^a-z0-9]//g')
+
+PROJECTNAME="${NOCONFLICT}-$(basename $(pwd))"
+PROJECTPREFIX=$(echo $PROJECTNAME | sed -e 's/[^a-z0-9]//g')
+
+export NOCONFLICT
+export NOCONFLICTPREFIX
+export PROJECTNAME
+export PROJECTPREFIX
+
+exec docker-compose -p $PROJECTNAME $*

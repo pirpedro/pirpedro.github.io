@@ -1,0 +1,58 @@
+<meta charset="utf-8">
+
+{% include seo.html %}
+
+<link href="{% if site.atom_feed.path %}{{ site.atom_feed.path }}{% else %}{{ '/feed.xml' | relative_url }}{% endif %}" type="application/atom+xml" rel="alternate" title="{{ site.title }} Feed">
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
+<link href="https://fonts.googleapis.com/css?family=Cookie" rel="stylesheet">
+{% if site.head_stylesheets %}
+  {% for ss in site.head_stylesheets %}
+    <link rel="stylesheet" href="{{ ss | relative_url }}">
+  {% endfor %}
+{% endif %}
+
+{% if page.head_stylesheets %}
+  {% for ss in page.head_stylesheets %}
+    <link rel="stylesheet" href="{{ ss | relative_url }}">
+  {% endfor %}
+{% endif %}
+
+<!--[if IE]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+{% if site.head_scripts %}
+  {% for script in site.head_scripts %}
+    <script src="{{ script | relative_url }}"></script>
+  {% endfor %}
+{% endif %}
+
+{% if page.head_scripts %}
+  {% for script in page.head_scripts %}
+    <script src="{{ script | relative_url }}"></script>
+  {% endfor %}
+{% endif %}
+
+{% if page.accept_tip == true %}
+<script data-name="BMC-Widget" src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js" data-id="{{page.author.tip.user | default: site.author.tip.user }}" data-description="{{page.author.tip.description | default: site.author.tip.description | default: "Support me on Buy me a coffee!"}}" data-message="{{ page.author.tip.message | default: site.author.tip.message | default: "Thank you for visiting. You can now buy me a coffee!"}}" data-color="#FF813F" data-position="{{page.sidebar.position | default: "left"}}" data-x_margin="15" data-y_margin="15"></script>
+{% endif %}

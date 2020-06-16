@@ -1,0 +1,44 @@
+#!/usr/bin/env bash
+
+# script/cibuild: Setup environment for CI to run tests. This is primarily
+#                 designed to run on the continuous integration server.
+
+set -e
+
+cd "$(dirname "$0")/.."
+
+teardown() {
+	script/teardown
+
+	exit ${1:0}
+}
+
+# On error teardown
+trap 'teardown $?' ERR
+
+echo "Tests started at…"
+date "+%H:%M:%S"
+
+# Export some common variables
+export CI=true
+
+# Pick CI context
+if [ ! -z "$DRONE_BUILD_NUMBER" ]; then
+	export NOCONFLICT_CONTEXT=$DRONE_BUILD_NUMBER
+elif [ ! -z "$BUILD_ID" ]; then
+	export NOCONFLICT_CONTEXT=$BUILD_ID
+elif [ ! -z "$TRAVIS_BUILD_ID" ]; then
+	export NOCONFLICT_CONTEXT=$TRAVIS_BUILD_ID
+else
+	export NOCONFLICT_CONTEXT=ci-$RANDOM
+fi
+
+export APP_ENV="test"
+
+# run tests.
+echo "Running tests…"
+date "+%H:%M:%S"
+script/test
+
+# Cleanup environment
+teardown
